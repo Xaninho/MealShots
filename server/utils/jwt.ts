@@ -24,6 +24,7 @@ export const decodeRefreshToken = (token: any) => {
     } catch (error) {
         return null;
     }
+}
 
 export const generateTokens = (user: any) => {
 

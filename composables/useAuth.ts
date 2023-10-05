@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode"
+//import jwt_decode from "jwt-decode"
 
 export default () => {
     const useAuthToken = () => useState('auth_token')
@@ -67,7 +67,7 @@ export default () => {
         })
     }
 
-    const reRefreshAccessToken = () => {
+    /*const reRefreshAccessToken = () => {
         const authToken = useAuthToken()
 
         if (!authToken.value) {
@@ -82,7 +82,7 @@ export default () => {
             await refreshToken()
             reRefreshAccessToken()
         }, newRefreshTime);
-    }
+    }*/
 
     const initAuth = () => {
         return new Promise(async (resolve, reject) => {
@@ -91,7 +91,7 @@ export default () => {
                 await refreshToken()
                 await getUser()
 
-                reRefreshAccessToken()
+                //reRefreshAccessToken()
 
                 resolve(true)
             } catch (error) {
@@ -103,7 +103,7 @@ export default () => {
         })
     }
 
-    const logout = () => {
+    /*const logout = () => {
         return new Promise(async (resolve, reject) => {
             try {
                 await useFetchApi('/api/auth/logout', {
@@ -117,7 +117,7 @@ export default () => {
                 reject(error)
             }
         })
-    }
+    }*/
 
     return {
         login,
@@ -125,6 +125,6 @@ export default () => {
         useAuthToken,
         initAuth,
         useAuthLoading,
-        logout
+        //logout
     }
 }
