@@ -6,6 +6,7 @@ import { uploadToCloudinary } from '~/server/utils/cloudinary';
 
 export default defineEventHandler(async (event) => {
 
+    console.log('event:', event)
     
     const form = formidable({})
 
@@ -20,12 +21,11 @@ export default defineEventHandler(async (event) => {
     });
 
     const { fields, files } = response;
-
     const userId = event.context?.auth?.user?.id
 
     const tweetData = {
         authorId: userId,
-        text: fields.text
+        text: fields.text.toString(),
     }
 
     const tweet = await createTweet(tweetData)
@@ -33,15 +33,13 @@ export default defineEventHandler(async (event) => {
     const filePromises = Object.keys(files).map(async key => {
         const file = files[key];
 
-        const cloudinaryResource = await uploadToCloudinary(file.filepath);
-
-        console.log(response);
+        const cloudinaryResource = await uploadToCloudinary(file[0].filepath);
         
         return createMediaFile({
             url: cloudinaryResource.secure_url,
             providerPublicId: cloudinaryResource.public_id,
             userId: userId,
-            tweetId: tweet.id
+            tweetId: tweet.authorId
         });
     })
 

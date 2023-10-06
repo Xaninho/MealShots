@@ -1,9 +1,7 @@
 import { prisma } from '.'
 
-export const createTweet = (tweetData : any) => {
-
-    prisma.tweet.create({
+export const createTweet = (tweetData) => {
+    return prisma.tweet.create({
         data: tweetData
-    })  
-
+    })
 }

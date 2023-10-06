@@ -11,8 +11,7 @@ export const uploadToCloudinary = async (file: any) => {
             api_secret: config.cloudinaryApiSecret
         });
         
-        
-        cloudinary.uploader.upload(file.path, (error: Error, result: UploadApiResponse) => {
+        cloudinary.uploader.upload(file, (error: Error, result: UploadApiResponse) => {
             if (error) {
                 reject(error);
             } else {
