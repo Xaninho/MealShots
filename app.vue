@@ -2,35 +2,37 @@
   <div :class="{'dark' : darkMode}">
     <div class="bg-white dark:bg-dim-900">
 
-    <!-- App -->
-    <div v-if="false" class="min-h-full">
+      <LoadingPage v-if="isAuthLoading" />
 
-      <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
+      <!-- App -->
+      <div v-else-if="user" class="min-h-full">
 
-        <!-- Left Sidebar -->
-        <div class="hidden md:block xs-col-span-1 xl:col-span-2">
-          <div class="sticky top-0">
-            <SidebarLeft />
+        <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
+
+          <!-- Left Sidebar -->
+          <div class="hidden md:block xs-col-span-1 xl:col-span-2">
+            <div class="sticky top-0">
+              <SidebarLeft />
+            </div>
           </div>
-        </div>
 
-        <!-- Main Content -->
-        <main class="col-span-12 bg-red-50 md:col-span-8 xl:col-span-6">
-          <router-view/>
-        </main>
+          <!-- Main Content -->
+          <main class="col-span-12 bg-red-50 md:col-span-8 xl:col-span-6">
+            <router-view/>
+          </main>
 
-        <!-- Right Sidebar -->
-        <div class="hidden col-span-12 md:block xl:col-span-4 md:col-span-3">
-          <div class="sticky top-0">
-            <SidebarRight />
+          <!-- Right Sidebar -->
+          <div class="hidden col-span-12 md:block xl:col-span-4 md:col-span-3">
+            <div class="sticky top-0">
+              <SidebarRight />
+            </div>
           </div>
+
         </div>
 
       </div>
 
-    </div>
-
-    <AuthPage v-else />
+      <AuthPage v-else />
 
 
   </div>
@@ -40,8 +42,13 @@
 
 <script setup lang="ts">
 const darkMode = ref(false)
-const { useAuthUser } = useAuth()
+const { useAuthUser, initAuth, useAuthLoading } = useAuth()
 const user = useAuthUser()
+const isAuthLoading = useAuthLoading()
+
+onBeforeMount(() => {
+  initAuth()
+})
 
 
 </script>

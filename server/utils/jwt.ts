@@ -22,15 +22,27 @@ export const decodeRefreshToken = (token: any) => {
     try {
         return jwt.verify(token, config.jwtRefreshSecret);
     } catch (error) {
+        console.log(error);
         return null;
     }
 }
+
+
+export const decodeAccessToken = (token: any) => {
+    const config = useRuntimeConfig();
+ 
+     try {
+         return jwt.verify(token, config.jwtAccessSecret);
+     } catch (error) {
+         return null;
+     }
+ }
+ 
 
 export const generateTokens = (user: any) => {
 
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);
-
 
     return {
         accessToken: accessToken,
