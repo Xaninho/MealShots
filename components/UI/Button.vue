@@ -9,8 +9,9 @@
 
     </button>
 </template>
-<script setup>
-const emits = defineEmits(['onClick'])
+
+<script setup lang="ts">
+const emits = defineEmits(['onClick']);
 
 const props = defineProps({
     disabled: {
@@ -56,7 +57,7 @@ const defaultWidth = computed(() => {
 
 const classes = computed(() => `${paddingClasses.value} ${props.liquid ? 'w-full' : defaultWidth.value}`)
 
-function handleClick(event) {
+function handleClick(event : any) {
     emits('onClick', event)
 }
 

@@ -58,6 +58,22 @@
                     </template>
                 </SidebarLeftTab>
 
+                <div class="hidden xl:block">
+                    <UIButton liquid size="lg">
+                        <span class="font-bold">
+                            Shot
+                        </span>
+                    </UIButton>
+                </div>
+
+                <div class="block xl:hidden">
+                    <UIButton>
+                        <div class="w-6 h-6 font-bold">
+                            <PencilIcon />
+                        </div>
+                    </UIButton>
+                </div>
+
             </div>
 
         </div>
@@ -67,7 +83,7 @@
 
 
 <script setup lang="ts">
-import { HomeIcon, HashtagIcon, InboxIcon, BookmarkIcon, UserIcon } from "@heroicons/vue/24/outline"
+import { HomeIcon, HashtagIcon, InboxIcon, BookmarkIcon, UserIcon, PencilIcon } from "@heroicons/vue/24/outline"
 
 
 const { defaultTransition } = useTailwindConfig();

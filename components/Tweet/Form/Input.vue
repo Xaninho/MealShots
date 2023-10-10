@@ -117,6 +117,9 @@
 
 const { mealshotsBorderColor } = useTailwindConfig();
 const text = ref('');
+
+const isDisabled = computed(() => text.value === '');
+
 const emits = defineEmits(['onSubmit']);
 const imageInput = ref();
 const selectedFile = ref(null)
