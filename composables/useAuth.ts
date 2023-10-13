@@ -105,10 +105,10 @@ export default () => {
         })
     }
 
-    /*const logout = () => {
+    const logout = () => {
         return new Promise(async (resolve, reject) => {
             try {
-                await useFetchApi('/api/auth/logout', {
+                await $fetch('/api/auth/logout', {
                     method: 'POST'
                 })
 
@@ -119,7 +119,7 @@ export default () => {
                 reject(error)
             }
         })
-    }*/
+    }
 
     return {
         login,
@@ -127,6 +127,6 @@ export default () => {
         useAuthToken,
         initAuth,
         useAuthLoading,
-        //logout
+        logout
     }
 }

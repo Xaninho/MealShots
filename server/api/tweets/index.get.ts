@@ -3,8 +3,9 @@ import { getTweets } from '~~/server/database/tweets'
 
 
 export default defineEventHandler(async (event) => {
-
-    const tweets = await getTweets({
+    const { query } = useQuery(event)
+    
+    const prismaQuery = await getTweets({
         include: {
             author: true,
             mediaFiles: true,
@@ -25,6 +26,19 @@ export default defineEventHandler(async (event) => {
             }
         ]
     });
+
+    if (!!query) {
+        primsaQuery = {
+            ...primsaQuery,
+            where: {
+                text: {
+                    contains: query
+                }
+            }
+        }
+    }
+
+    const tweets = await getTweets(primsaQuery)
     
     return {
         tweets: tweets.map(tweetTransformer)
