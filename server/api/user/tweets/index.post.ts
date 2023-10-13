@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
 
     const replyTo = fields.replyTo;
 
-    if (replyTo && replyTo !== 'null') {
+    if (replyTo && replyTo !== undefined && replyTo !== null) {
         tweetData.replyToId = parseInt(replyTo);
     }
 

@@ -3,41 +3,45 @@
         <MainSection title="Home" :loading="loading">
 
             <Head>
-                <title>MealShots</title>
+                <Title>Home / Twitter</Title>
             </Head>
 
             <div class="border-b" :class="mealshotsBorderColor">
-                <TweetForm :user="user"/>
+                <TweetForm :user="user" @on-success="handleFormSuccess" />
             </div>
 
-            <TweetListFeed :tweets="homeTweets"/>
+            <TweetListFeed :tweets="homeTweets" />
 
         </MainSection>
     </div>
 </template>
-
 <script setup lang="ts">
+const { mealshotsBorderColor } = useTailwindConfig()
+const { getTweets } = useTweets()
+
 const loading = ref(false)
-
-const { getHomeTweets } = useTweets()
-
 const homeTweets = ref([])
 const { useAuthUser } = useAuth()
-
-const { mealshotsBorderColor } = useTailwindConfig();
 
 const user = useAuthUser()
 
 onBeforeMount(async () => {
-    loading.value = true;
-
+    loading.value = true
     try {
-        const {tweets} = await getHomeTweets()
+        const { tweets } = await getTweets()
+
         homeTweets.value = tweets
     } catch (error) {
-        console.error(error)
+        console.log(error)
     } finally {
-        loading.value = false	
+        loading.value = false
     }
 })
+
+function handleFormSuccess(tweet) {
+    navigateTo({
+        path: `/status/${tweet.id}`
+    })
+}
+
 </script>
