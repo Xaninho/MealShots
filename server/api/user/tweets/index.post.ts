@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
     const replyTo = fields.replyTo;
 
     if (replyTo && replyTo !== 'null') {
-        tweetData.replyToId = replyTo;
+        tweetData.replyToId = parseInt(replyTo);
     }
 
     const tweet = await createTweet(tweetData)
