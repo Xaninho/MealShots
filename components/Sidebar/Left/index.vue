@@ -24,24 +24,6 @@
 
                 <SidebarLeftTab active>
                     <template v-slot:icon>
-                        <HashtagIcon />
-                    </template>
-                    <template v-slot:name>
-                        Explore
-                    </template>
-                </SidebarLeftTab>
-
-                <SidebarLeftTab active>
-                    <template v-slot:icon>
-                        <InboxIcon />
-                    </template>
-                    <template v-slot:name>
-                        Messages
-                    </template>
-                </SidebarLeftTab>
-
-                <SidebarLeftTab active>
-                    <template v-slot:icon>
                         <BookmarkIcon />
                     </template>
                     <template v-slot:name>

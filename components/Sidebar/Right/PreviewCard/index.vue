@@ -6,11 +6,6 @@
         </h1>
 
         <slot></slot>
-
-        <div class="p-3 text-sm text-blue-400 cursor-pointer hover:bg-gray-100 dark:hover:bg-dim-300" :class="defaultTransition">
-            Show more
-        </div>
-
     </div>
 </template>
 

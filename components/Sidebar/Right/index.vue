@@ -13,25 +13,8 @@
                 placeholder="Search tweet" type="text">
         </div>
 
-
-        <!-- Preview Card : What's happening -->
-        <SidebarRightPreviewCard title="What's happening">
-
-            <SidebarRightPreviewCardItem v-for="whatsHappening in whatsHappeningItems">
-                <div>
-                    <h2 class="font-bold text-gray-800 text-md dark:text-white">{{ whatsHappening.title }}</h2>
-
-                    <p class="text-xs text-gray-400">
-                        {{ whatsHappening.count }}
-                    </p>
-                </div>
-            </SidebarRightPreviewCardItem>
-
-        </SidebarRightPreviewCard>
-
-
         <!-- Preview Card : Who to follow -->
-        <SidebarRightPreviewCard title="Who to follow">
+        <SidebarRightPreviewCard title="Suggestion to follow">
             <SidebarRightPreviewCardItem v-for="whoToFollow in whoToFollowItems">
                 <div class="flex flex-row items-center justify-between p-2">
                     <div class="flex flex-row">
@@ -50,29 +33,16 @@
             </SidebarRightPreviewCardItem>
         </SidebarRightPreviewCard>
 
-
         <footer>
             <ul class="mx-2 my-4 text-xs text-gray-500">
                 <li class="inline-block mx-2">
                     <a href="#" class="hover:underline" @click.prevent="handleToggleDarkMode">Dark mode</a>
                 </li>
                 <li class="inline-block mx-2">
-                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="https://github.com/Xaninho/MealShots" class="hover:underline">Github</a>
                 </li>
                 <li class="inline-block mx-2">
-                    <a href="#" class="hover:underline">Cookie Policy</a>
-                </li>
-                <li class="inline-block mx-2">
-                    <a href="#" class="hover:underline">Accessability</a>
-                </li>
-                <li class="inline-block mx-2">
-                    <a href="#" class="hover:underline">Ads info</a>
-                </li>
-                <li class="inline-block mx-2">
-                    <a href="#" class="hover:underline">More</a>
-                </li>
-                <li class="inline-block mx-2">
-                    © 2022 Twitter, Inc.
+                    © 2023 Mealshots
                 </li>
             </ul>
         </footer>
@@ -94,41 +64,26 @@ function handleSearch() {
     })
 }
 
-const whatsHappeningItems = ref([
-    {
-        title: 'SpaceX',
-        count: '18.8k Tweets'
-    },
-    {
-        title: '#CodingIsFun',
-        count: '8.8k Tweets'
-    },
-    {
-        title: '#artforall',
-        count: '1.8k Tweets'
-    }
-])
-
 const whoToFollowItems = ref([
     {
-        name: 'Joe Biden',
-        handle: '@JoeBiden',
-        image: 'https://picsum.photos/200/200'
+        name: 'MealPrep 4 Everyone',
+        handle: 'mealPrep4Everyone',
+        image: 'https://i.pinimg.com/originals/b4/68/34/b46834ce79caba8be82c2889ea52ee5b.jpg'
     },
     {
-        name: 'Joe Biden',
-        handle: '@JoeBiden',
-        image: 'https://picsum.photos/200/200'
+        name: 'The Bulk Kitchen',
+        handle: '@thebulkkitchen',
+        image: 'https://i0.wp.com/quotetheanime.com/wp-content/uploads/2022/08/Pic.jpg'
     },
     {
-        name: 'Joe Biden',
-        handle: '@JoeBiden',
-        image: 'https://picsum.photos/200/200'
+        name: '6 Pack Kitchen',
+        handle: '6packkitchen',
+        image: 'https://listasnerds.com.br/wp-content/uploads/2022/12/Gokushufudou_Tatsu-Imortal-7-1-850x560.jpg'
     }
 ])
 
-function handleToggleDarkMode() {
-    //emitter.$emit('toggleDarkMode')
-}
+/*function handleToggleDarkMode() {
+    emitter.$emit('toggleDarkMode')
+}*/
 
 </script>
